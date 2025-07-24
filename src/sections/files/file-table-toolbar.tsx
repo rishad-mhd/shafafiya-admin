@@ -212,7 +212,7 @@ export function FileTableToolbar({
         }}
       >
         <Stack spacing={2} p={1} pt={3} flex={1}>
-          <Stack direction="row" width="100%" gap={2} flexWrap="wrap">
+          <Stack direction="row" alignItems='center' width="100%" gap={2} flexWrap="wrap">
             <DatePicker
               label="Start Date"
               value={startDate}
@@ -271,7 +271,6 @@ export function FileTableToolbar({
             </FormControl>
             <Button
               variant="contained"
-              sx={{ mt: 2 }}
               color="primary"
               onClick={handleSubmit}
               loading={loading}

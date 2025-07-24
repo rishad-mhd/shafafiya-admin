@@ -185,7 +185,7 @@ export function Logo({
       {...other}
     >
       {/* {isSingle ? singleLogo : fullLogo} */}
-      <Box component="img" src='/assets/icons/logo.png' width={200} height={80}  />
+      <Box component="img" src='/assets/icons/logo.png' width={180} height={75}  />
     </LogoRoot>
   );
 }

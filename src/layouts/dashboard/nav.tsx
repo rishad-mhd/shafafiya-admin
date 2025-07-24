@@ -187,7 +187,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
       </Scrollbar>
 
       {slots?.bottomArea}
-      <Typography variant="subtitle2">Powered By TekmosTechnology</Typography>
+      <Typography variant="subtitle2">Powered By Tekmos Technology</Typography>
       {/* <NavUpgrade /> */}
     </>
   );

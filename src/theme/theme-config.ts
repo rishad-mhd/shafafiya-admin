@@ -38,12 +38,18 @@ export const themeConfig: ThemeConfig = {
    *************************************** */
   palette: {
     primary: {
-      lighter: '#D0ECFE',
-      light: '#73BAFB',
-      main: '#1877F2',
-      dark: '#0C44AE',
-      darker: '#042174',
+      lighter: '#FAF7E3',
+      light: '#E2D6A5',
+      main: '#A18F58',
+      dark: '#735E2C',
+      darker: '#4D3810',
       contrastText: '#FFFFFF',
+      // lighter: '#D0ECFE',
+      // light: '#73BAFB',
+      // main: '#1877F2',
+      // dark: '#0C44AE',
+      // darker: '#042174',
+      // contrastText: '#FFFFFF',
     },
     secondary: {
       lighter: '#EFD6FF',
