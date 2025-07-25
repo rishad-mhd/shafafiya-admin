@@ -13,11 +13,11 @@ export type NavItem = {
 };
 
 export const navData = [
-  // {
-  //   title: 'Dashboard',
-  //   path: '/',
-  //   icon: icon('ic-analytics'),
-  // },
+  {
+    title: 'Dashboard',
+    path: '/',
+    icon: icon('ic-analytics'),
+  },
   {
     title: 'Files',
     path: '/file',

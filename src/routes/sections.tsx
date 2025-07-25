@@ -51,11 +51,11 @@ export const routesSection: RouteObject[] = [
       </DashboardLayout>
     ),
     children: [
-      { index: true, element: <Navigate to="file" replace /> },
-      {
-        path: 'dashboard',
-        element: <DashboardPage />,
-      },
+      { index: true, element: <DashboardPage /> },
+      // {
+      //   path: 'dashboard',
+      //   element: <DashboardPage />,
+      // },
       { path: 'user', element: <UserPage /> },
       {
         path: 'file',
