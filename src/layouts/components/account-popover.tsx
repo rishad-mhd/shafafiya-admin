@@ -16,6 +16,8 @@ import { useRouter, usePathname } from 'src/routes/hooks';
 
 import { _myAccount } from 'src/_mock';
 
+import { useAuthContext } from '../../context/auth.context';
+
 // ----------------------------------------------------------------------
 
 export type AccountPopoverProps = IconButtonProps & {
@@ -29,6 +31,7 @@ export type AccountPopoverProps = IconButtonProps & {
 
 export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps) {
   const router = useRouter();
+  const { logout } = useAuthContext();
 
   const pathname = usePathname();
 
@@ -49,6 +52,11 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
     },
     [handleClosePopover, router]
   );
+
+  const handleLogout = useCallback(() => {
+    logout();
+    handleClosePopover();
+  }, [handleClosePopover, logout]);
 
   return (
     <>
@@ -129,7 +137,7 @@ export function AccountPopover({ data = [], sx, ...other }: AccountPopoverProps)
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Box sx={{ p: 1 }}>
-          <Button fullWidth color="error" size="medium" variant="text">
+          <Button fullWidth color="error" onClick={handleLogout} size="medium" variant="text">
             Logout
           </Button>
         </Box>

@@ -1,14 +1,17 @@
 import type { RouteObject } from 'react-router';
 
 import { lazy, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { varAlpha } from 'minimal-shared/utils';
-import { Outlet, Navigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
 import { AuthLayout } from 'src/layouts/auth';
 import { DashboardLayout } from 'src/layouts/dashboard';
+
+import AuthGuard from '../components/guard/AuthGuard';
+import RoleBasedGuard from '../components/guard/RoleBasedGuard';
 
 // ----------------------------------------------------------------------
 
@@ -18,6 +21,8 @@ export const UserPage = lazy(() => import('src/pages/user'));
 export const FilePage = lazy(() => import('src/pages/files'));
 export const FileDownloadPage = lazy(() => import('src/pages/files-download'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
+export const ForgotPasswordPage = lazy(() => import('src/pages/forgot-password'));
+export const ResetPasswordPage = lazy(() => import('src/pages/reset-password'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
@@ -44,11 +49,15 @@ const renderFallback = () => (
 export const routesSection: RouteObject[] = [
   {
     element: (
-      <DashboardLayout>
-        <Suspense fallback={renderFallback()}>
-          <Outlet />
-        </Suspense>
-      </DashboardLayout>
+      <AuthGuard>
+        <RoleBasedGuard hasContent roles={['admin']}>
+          <DashboardLayout>
+            <Suspense fallback={renderFallback()}>
+              <Outlet />
+            </Suspense>
+          </DashboardLayout>
+        </RoleBasedGuard>
+      </AuthGuard>
     ),
     children: [
       { index: true, element: <DashboardPage /> },
@@ -76,6 +85,22 @@ export const routesSection: RouteObject[] = [
     element: (
       <AuthLayout>
         <SignInPage />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: 'forgot-password',
+    element: (
+      <AuthLayout>
+        <ForgotPasswordPage />
+      </AuthLayout>
+    ),
+  },
+  {
+    path: 'reset-password',
+    element: (
+      <AuthLayout>
+        <ResetPasswordPage />
       </AuthLayout>
     ),
   },

@@ -19,7 +19,6 @@ import { TableEmptyRows } from '../table-empty-rows';
 import { FileTableToolbar } from '../file-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
-
 // ----------------------------------------------------------------------
 
 interface FileViewProps {
@@ -68,7 +67,10 @@ export function FileView({ transactions, setTransactions }: FileViewProps) {
           selected={table.selected}
           filterName={filterName}
           setTransactions={setTransactions}
-          resetTable={() => table.onResetPage()}
+          resetTable={() => {
+            table.onResetPage();
+            table.onSelectAllRows(false, []);
+          }}
           onFilterName={(event: React.ChangeEvent<HTMLInputElement>) => {
             setFilterName(event.target.value);
             table.onResetPage();

@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 
 import { Box, Chip, Modal, Stack, Button, Typography, LinearProgress } from '@mui/material';
 
-const socket = io('http://localhost:3002'); // Replace with your server URL
+import { CONFIG } from '../../config-global';
+
+const socket = io(CONFIG.baseUrl); // Replace with your server URL
 
 const style = {
   position: 'absolute' as const,
